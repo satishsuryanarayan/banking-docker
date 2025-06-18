@@ -1,0 +1,33 @@
+name: banking
+
+services:
+  web:
+    build: ./flaskapp
+    image: satkavsahked/banking-flaskapp:latest
+    container_name: flaskapp-container
+    ports:
+      - "8000:8000"
+    volumes:
+      - app-data:/usr
+    stop_signal: SIGINT
+    depends_on:
+      db:
+        condition: service_healthy
+  db:
+    build: ./mysql
+    image: satkavsahked/banking-mysql:latest
+    container_name: mysql-container
+    ports:
+      - "3306:3306"
+    volumes:
+      - db-data:/var/lib/mysql
+    healthcheck:
+      test: ["CMD", "mysql", "-u", "root", "-proot", "-e", "use bank;"]
+      interval: 10s
+      timeout: 10s
+      retries: 3
+      start_period: 5s 
+
+volumes:
+    app-data:
+    db-data:
