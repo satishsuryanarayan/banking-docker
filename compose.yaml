@@ -17,6 +17,8 @@ services:
     build: ./mysql
     image: satkavsahked/banking-mysql:latest
     container_name: mysql-container
+    ports:
+      - "3306:3306"
     volumes:
       - db-data:/var/lib/mysql
     healthcheck:
