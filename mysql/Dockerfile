@@ -10,4 +10,4 @@ COPY setup.sql /docker-entrypoint-initdb.d/
 EXPOSE 3306
 
 # Start the MySQL server when the container is run
-CMD ["mysqld", "--innodb-dedicated-server"]
+CMD ["mysqld", "--innodb-dedicated-server=ON"]
