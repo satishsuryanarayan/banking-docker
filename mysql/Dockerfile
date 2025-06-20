@@ -1,5 +1,5 @@
 # Use the official MySQL image as a base
-FROM mysql:latest
+FROM mysql:8.4.5
 
 # needed for intialization
 ENV MYSQL_ROOT_PASSWORD=root
