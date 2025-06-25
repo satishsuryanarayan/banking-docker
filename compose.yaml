@@ -4,12 +4,15 @@ services:
   web:
     build: ./flaskapp
     image: satkavsahked/banking-flaskapp:latest
-    container_name: flaskapp-container
-    ports:
-      - "8000:8000"
+    environment:
+      - PORT=8000
+    deploy:
+      replicas: 4
     volumes:
       - app-data:/usr
     stop_signal: SIGINT
+    networks:
+      - loadbalancing
     depends_on:
       db:
         condition: service_healthy
@@ -17,8 +20,8 @@ services:
     build: ./mysql
     image: satkavsahked/banking-mysql:latest
     container_name: mysql-container
-    ports:
-      - "3306:3306"
+    environment:
+      - PORT=3306
     volumes:
       - db-data:/var/lib/mysql
     healthcheck:
@@ -26,8 +29,22 @@ services:
       interval: 10s
       timeout: 10s
       retries: 3
-      start_period: 5s 
+      start_period: 5s
+    networks:
+      - loadbalancing
+  nginx:
+    build: ./nginx
+    container_name: banking-nginx
+    ports:
+      - "80:80"
+    networks:
+      - loadbalancing
+    depends_on:
+      - web
 
 volumes:
     app-data:
     db-data:
+
+networks:
+  loadbalancing:
