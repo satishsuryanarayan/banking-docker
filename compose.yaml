@@ -2,8 +2,8 @@ name: banking
 
 services:
   web:
-    build: ./flaskapp
-    image: satkavsahked/banking-flaskapp:latest
+    build: webapp
+    image: satkavsahked/banking-webapp:latest
     environment:
       - PORT=8000
     deploy:
