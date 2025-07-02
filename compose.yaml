@@ -2,7 +2,7 @@ name: banking
 
 services:
   web:
-    build: webapp
+    build: ./webapp
     image: satkavsahked/banking-webapp:latest
     environment:
       - PORT=8000
