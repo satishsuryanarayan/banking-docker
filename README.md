@@ -7,9 +7,9 @@ This project composes two services:
 Each service runs in a separate Docker container.
 
 ### Instructions:
-#### Starting the CFR Insights API server
+#### Starting the Banking API server
 1. docker compose up
 2. Point your browser to http://127.0.0.1:8000/docs
 
-#### Shutting down the CFR Insights API server
+#### Shutting down the Banking API server
 1. docker compose down
