@@ -1,7 +1,7 @@
 # Dockerize Banking Application
 
 This project composes two services:
-1. The Flask Web Application
+1. Web Application
 2. MySQL Database
 
 Each service runs in a separate Docker container.
