@@ -9,7 +9,7 @@ Each service runs in a separate Docker container.
 ### Instructions:
 #### Starting the Banking API server
 1. docker compose up
-2. Point your browser to http://127.0.0.1/docs/swagger
+2. Use the sample client to interact with the Banking API server
 
 #### Shutting down the Banking API server
 1. docker compose down
